@@ -4,7 +4,7 @@ print("*********************************")
 
 secret_number = 42
 max_attempts = 3
-rounds = 1
+rounds = ""
 
 for rounds in range(1, max_attempts + 1):
 
@@ -30,4 +30,4 @@ for rounds in range(1, max_attempts + 1):
         elif guessed_less:
             print("Você errou. O seu chute foi menor do que o número secreto")
 
-    rounds = rounds +1
+
