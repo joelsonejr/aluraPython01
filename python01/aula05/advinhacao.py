@@ -3,12 +3,12 @@ print("Bem vindo ao jogo de Adivinhação!")
 print("*********************************")
 
 secret_number = 42
-attempts = 3
+max_attempts = 3
 rounds = 1
 
-while (rounds <= attempts):
+for rounds in range(1, max_attempts + 1):
 
-    print("Tentativa {} de {}".format(rounds,attempts))
+    print("Tentativa {} de {}".format(rounds,max_attempts))
 
     user_guess = int(input("Digite o seu número: "))
 
