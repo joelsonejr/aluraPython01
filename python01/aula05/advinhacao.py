@@ -12,13 +12,16 @@ for rounds in range(1, max_attempts + 1):
 
     user_guess = int(input("Digite o seu número: "))
 
-    print("Você digitou: ", user_guess)
+    if user_guess <= 0:
+        while user_guess < 1 or user_guess > 100:
+            print("\n Seu palpite deve ser um número entre 1 e 100 \n")
+            user_guess = int(input("Digite o seu número: \n"))
+
+    print("\n Você digitou: ", user_guess)
 
     guessed_correctly = secret_number == user_guess
     guessed_more = secret_number < user_guess
     guessed_less = secret_number > user_guess
-
-
 
     if guessed_correctly:
         print("Você acertou")
