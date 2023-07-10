@@ -49,7 +49,7 @@ secret_number = random.randint(1, 100)
 
 def guessingGame():
   rounds = 1
-  max_attempts = 10
+  max_attempts = 9
   numberOfAttempts = 1
 
   printGameHeader(welcomeMessage, "")
