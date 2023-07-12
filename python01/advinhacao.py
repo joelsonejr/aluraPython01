@@ -1,10 +1,26 @@
+import random
+
 print("*********************************")
 print("Bem vindo ao jogo de Adivinhação!")
 print("*********************************")
 
-secret_number = 42
+secret_number = random.randrange(1, 101)
 max_attempts = 3
 rounds = ""
+points = 1000
+
+print("Selecione o nível de dificuldade desejado: ")
+print("(1) Fácil (2) Médio (3) Difícil")
+
+gameDificulty = int(input("Nível de dificuldade: "))
+
+if (gameDificulty == 1):
+    max_attempts = 10
+elif (gameDificulty == 2):
+        max_attempts = 5
+else:
+    max_attempts = 3
+
 
 for rounds in range(1, max_attempts + 1):
 
@@ -24,7 +40,7 @@ for rounds in range(1, max_attempts + 1):
     guessed_less = secret_number > user_guess
 
     if guessed_correctly:
-        print("Você acertou")
+        print("Você acertou e fez {} pontos".format(points))
         break
 
     else:
@@ -32,5 +48,9 @@ for rounds in range(1, max_attempts + 1):
             print("Você errou. O seu chute foi maior do que o número secreto")
         elif guessed_less:
             print("Você errou. O seu chute foi menor do que o número secreto")
+        
+        lostPoints = abs(secret_number - user_guess)
+        points = points - lostPoints
+
 
 
