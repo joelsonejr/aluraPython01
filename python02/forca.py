@@ -1,20 +1,22 @@
 def playForca():
   print("*********************************")
-  print("  Bem vindo ao jogo de Forca!")
+  print("   Bem vindo ao jogo de Forca!   ")
   print("*********************************")
 
   secret_word = "banana"
 
-  hanged = False
+  hanged = 0
   hitted = False
-  guessed_letter =[]
+  guessed_letter = []
 
   for i in range(len(secret_word)):
     guessed_letter.append("_")
 
   print(guessed_letter)
 
-  while(not hanged and not hitted):
+  while(hanged <= 6 and not hitted ):
+    hanged = 0
+    
     guess = (input("Qual a letra? "))
     guess = guess.strip()
 
@@ -28,6 +30,17 @@ def playForca():
       index = index + 1
 
     print(guessed_letter)
+    
+    def finishGame(guess, secret_word):
+      guess = ''.join(guess)
+      
+      if(guess == secret_word):
+        print("Parabéns, você acertou!!!! A palavra secreta era {0}".format(secret_word))
+      else:
+        (print("Tente novamente"))
+      hanged = hanged + 1
+
+    finishGame(guessed_letter, secret_word)
   
   print("Fim do jogo")
 
