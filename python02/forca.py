@@ -1,49 +1,44 @@
-def playForca():
-  print("*********************************")
-  print("   Bem vindo ao jogo de Forca!   ")
-  print("*********************************")
+def jogar():
+    print("*********************************")
+    print("***Bem vindo ao jogo da Forca!***")
+    print("*********************************")
 
-  secret_word = "banana"
+    palavra_secreta = "banana".upper()
+    letras_acertadas = ["_", "_", "_", "_", "_", "_"]
 
-  hanged = 0
-  hitted = False
-  guessed_letter = []
+    enforcou = False
+    acertou = False
+    erros = 0
 
-  for i in range(len(secret_word)):
-    guessed_letter.append("_")
+    print(letras_acertadas)
 
-  print(guessed_letter)
+    while(not enforcou and not acertou):
 
-  while(hanged <= 6 and not hitted ):
-    hanged = 0
+        chute = input("Qual letra? ")
+        chute = chute.strip().upper()
+
+        if (chute in palavra_secreta):
+          index = 0
+          for letra in palavra_secreta:
+              if(chute == letra):
+                  letras_acertadas[index] = letra
+              index += 1
+        else:
+            erros += 1
+            print("Errouuuuuuuuuuuuu. Restam {} tentativas.".format(6 - erros))
+
+        enforcou = erros == 6
+        acertou = "_" not in letras_acertadas
+
+        print(letras_acertadas)
+
+    if (acertou):
+      print("Você ganhou")
+    else:
+      print("você perdeu")
     
-    guess = (input("Qual a letra? "))
-    guess = guess.strip()
+    print("Fim do jogo")
 
-    index = 0
+if(__name__ == "__main__"):
+    jogar()
 
-    for letter in secret_word:
-      if(letter.lower() == guess.lower()):
-        print("Encontrei a letra {} na posição {}".format(guess, index))
-        guessed_letter[index] = letter
-
-      index = index + 1
-
-    print(guessed_letter)
-    
-    def finishGame(guess, secret_word):
-      guess = ''.join(guess)
-      
-      if(guess == secret_word):
-        print("Parabéns, você acertou!!!! A palavra secreta era {0}".format(secret_word))
-      else:
-        (print("Tente novamente"))
-      hanged = hanged + 1
-
-    finishGame(guessed_letter, secret_word)
-  
-  print("Fim do jogo")
-
-# runs the program when it's executed directly from terminal, and not whem it's imported by another script.
-if __name__ == "__main__":
-  playForca()
